@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 48px;
+}
+
+.sortingType {
+  display: flex;
+  gap: 40px;
+}
+
+.sortingOrder {
+  display: flex;
+  gap: 12px;
+}
+
+.performanceContainer {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0 auto;
+  gap: 16px;
+  max-width: 1040px;
+}

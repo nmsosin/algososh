@@ -22,6 +22,10 @@ export const getFibonacciNumber = (index: number): number[] => {
 }
 // array sort
 
+   // selection sort
+
+   // bubble sort
+
 // stack
 
 // queue
