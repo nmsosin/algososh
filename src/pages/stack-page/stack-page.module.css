@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  justify-content: space-around;
+  max-width: 830px;
+  margin: 0 auto;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 12px;
+  width: 522px;
+}
+
+
+.performanceContainer {
+  display: flex;
+  gap: 16px;
+  margin-top: 120px;
+  padding: 0;
+  max-width: 1040px;
+}
+
+.circle {
+  list-style-type: none;
+}
