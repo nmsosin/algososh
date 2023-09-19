@@ -6,20 +6,38 @@ import fibonacciPageStyles from "./fibonacci-page.module.css";
 import {getFibonacciNumber} from "../../services/algorythms";
 import {Circle} from "../../components/ui/circle/circle";
 import StringPageStyles from "../string/string.module.css";
+import {waitForDelay} from "../../services/utils";
+import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 
 export const FibonacciPage: React.FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [index, setIndex] = useState<number>(0);
-
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  
   const handleInputChange = (evt: FormEvent<HTMLInputElement>) => {
     setIndex(evt.currentTarget.valueAsNumber);
   }
 
+  const addFibNumber = async (index: number) => {
+    let numbersArray: number[] = [];
+    for (let i = 0; i <= index; i++) {
+      await waitForDelay(SHORT_DELAY_IN_MS)
+      numbersArray.push(getFibonacciNumber(i))
+
+      setNumbers([...numbersArray])
+    }
+
+    setButtonDisabled(false);
+    setIsLoading(false);
+  }
+
   const handleButtonClick = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    const fibNumbers = getFibonacciNumber(index)
-    setNumbers(fibNumbers);
-    console.log(numbers);
+    setButtonDisabled(true);
+    setIsLoading(true);
+
+    addFibNumber(index);
   }
 
   return (
@@ -37,13 +55,14 @@ export const FibonacciPage: React.FC = () => {
           <Button
             text={'Рассчитать'}
             type={'submit'}
+            disabled={buttonDisabled}
+            isLoader={isLoading}
           />
         </div>
         <ul className={fibonacciPageStyles.performanceContainer}>
           {
             numbers &&
             numbers.map((item, index) => {
-              console.log(item, index)
               return (
                 <li key={index} className={StringPageStyles.circle}>
                   <Circle

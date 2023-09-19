@@ -5,7 +5,8 @@ import {Input} from "../../components/ui/input/input";
 import StringPageStyles from './string.module.css'
 import {Circle} from "../../components/ui/circle/circle";
 import {ElementStates} from "../../types/element-states";
-import {DELAY_L} from "../../services/constants";
+import {waitForDelay} from "../../services/utils";
+import {DELAY_IN_MS} from "../../constants/delays";
 
 type TLetter = {
   value?: string;
@@ -21,10 +22,6 @@ export const StringComponent: React.FC = () => {
   const handleInputChange = (evt: FormEvent<HTMLInputElement>) => {
     setInputValue(evt.currentTarget.value.trim())
   }
-
-  const waitForDelay = (delayTime: number) => new Promise((resolve) => {
-    setTimeout(resolve, delayTime)
-  });
 
   const replaceCircles = async (inputValue: string) => {
     const letters = inputValue.split('');
@@ -45,12 +42,12 @@ export const StringComponent: React.FC = () => {
     while (start <= end) {
       let tempStr = '';
 
-      await waitForDelay(DELAY_L)
+      await waitForDelay(DELAY_IN_MS)
       circlesArray[start].state = ElementStates.Changing;
       circlesArray[end].state = ElementStates.Changing;
       setCircles([...circlesArray]);
 
-      await waitForDelay(DELAY_L)
+      await waitForDelay(DELAY_IN_MS)
       tempStr = circlesArray[start].value;
       circlesArray[start].value = circlesArray[end].value;
       circlesArray[end].value = tempStr;
