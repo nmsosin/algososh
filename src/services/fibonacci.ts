@@ -1,9 +1,3 @@
-// string reverse
-export const reverseString = (letters: string[]) => {
-   return [...letters].reverse();
-}
-
-// fibonacci
 export const getFibonacciNumber = (index: number): number => {
    const fibonacciNumbers = [1, 1];
 
@@ -20,14 +14,3 @@ export const getFibonacciNumber = (index: number): number => {
 
    return fibonacciNumbers[index];
 }
-// array sort
-
-   // selection sort
-
-   // bubble sort
-
-// stack
-
-// queue
-
-// linked list

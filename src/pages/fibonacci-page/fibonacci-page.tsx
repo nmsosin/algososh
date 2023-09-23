@@ -3,7 +3,7 @@ import { SolutionLayout } from "../../components/ui/solution-layout/solution-lay
 import {Input} from "../../components/ui/input/input";
 import {Button} from "../../components/ui/button/button";
 import fibonacciPageStyles from "./fibonacci-page.module.css";
-import {getFibonacciNumber} from "../../services/algorythms";
+import {getFibonacciNumber} from "../../services/fibonacci";
 import {Circle} from "../../components/ui/circle/circle";
 import StringPageStyles from "../string/string.module.css";
 import {waitForDelay} from "../../services/utils";
