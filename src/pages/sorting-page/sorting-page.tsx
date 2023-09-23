@@ -24,8 +24,7 @@ export const SortingPage: React.FC = () => {
   const handleChangeSortingType = (evt: ChangeEvent<HTMLInputElement>) => {
     setSortingType(evt.target.value);
   }
-
-  // selection sort
+  
   const selectionSorting = async (array: TSortingColumns[], order: string) => {
     let tempArr = [...array];
     for (let i = 0; i < tempArr.length; i++) {
@@ -64,11 +63,34 @@ export const SortingPage: React.FC = () => {
     setIsLoading(false);
   }
 
-  // TODO: bubble sort
-  // const bubbleSorting = async (array: number[], order: string) => {
-  //   let tempArr = [...array];
-  //
-  // }
+  const bubbleSorting = async (array: TSortingColumns[], order: string) => {
+    let tempArr = [...array];
+    for (let i = 0; i < tempArr.length; i++) {
+      tempArr[i].state = ElementStates.Default;
+    }
+
+    for (let i = tempArr.length - 1; i >= 0; i--) {
+      for (let j = 0; j < i; j++) {
+        tempArr[j].state = ElementStates.Changing;
+        tempArr[j+1].state = ElementStates.Changing;
+
+        await waitForDelay(DELAY_IN_MS);
+        if (order === 'ascending' ? tempArr[j].value > tempArr[j + 1].value : tempArr[j].value < tempArr[j + 1].value) {
+          tempArr = swapItems(tempArr, j, j + 1);
+        }
+          tempArr[j].state = ElementStates.Default;
+          if (tempArr[j + 1]) {
+            tempArr[j + 1].state = ElementStates.Default
+          };
+        setNumbers([...tempArr]);
+      }
+      tempArr[i].state = ElementStates.Modified;
+      setNumbers([...tempArr]);
+
+    }
+    setButtonDisabled(false);
+    setIsLoading(false);
+  }
 
   const handleAscendingOrderClick = async () => {
     setButtonDisabled(true);
@@ -77,22 +99,24 @@ export const SortingPage: React.FC = () => {
       case 'selection':
         await selectionSorting(numbers, 'ascending');
         break;
-      // case 'bubble':
-      //   await bubbleSorting(numbers, 'ascending');
-      //   break;
+      case 'bubble':
+        await bubbleSorting(numbers, 'ascending');
+        break;
     }
 
     return new Error();
   }
 
   const handleDescendingOrderClick = async () => {
+    setButtonDisabled(true);
+    setIsLoading(true);
     switch (sortingType) {
       case 'selection':
         await selectionSorting(numbers, 'descending');
         break;
-      // case 'bubble':
-      //   await bubbleSorting(numbers, 'descending');
-      //   break;
+      case 'bubble':
+        await bubbleSorting(numbers, 'descending');
+        break;
     }
 
     return new Error();
@@ -107,12 +131,14 @@ export const SortingPage: React.FC = () => {
             value={'selection'}
             onChange={handleChangeSortingType}
             checked={sortingType === 'selection'}
+            disabled={buttonDisabled}
           />
           <RadioInput
             label={'Пузырёк'}
             value={'bubble'}
             onChange={handleChangeSortingType}
             checked={sortingType === 'bubble'}
+            disabled={buttonDisabled}
           />
         </div>
 
@@ -121,17 +147,23 @@ export const SortingPage: React.FC = () => {
             text={'По возрастанию'}
             sorting={Direction.Ascending}
             onClick={handleAscendingOrderClick}
+            disabled={buttonDisabled}
+            isLoader={isLoading}
           />
           <Button
             text={'По убыванию'}
             sorting={Direction.Descending}
             onClick={handleDescendingOrderClick}
+            disabled={buttonDisabled}
+            isLoader={isLoading}
           />
         </div>
 
         <Button
           text={'Новый массив'}
           onClick={setRandomNumbers}
+          disabled={buttonDisabled}
+          isLoader={isLoading}
         />
       </div>
 
