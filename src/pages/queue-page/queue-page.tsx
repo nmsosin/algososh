@@ -64,10 +64,6 @@ export const QueuePage: React.FC = () => {
 
     setAddButtonDisabled(false)
     setIsAddButtonLoading(false)
-
-    console.log('queue', queue)
-    console.log('head', queue.getHead())
-    console.log('tail', queue.getTail())
   }
 
   const handleDeleteButton = async () => {
@@ -85,9 +81,6 @@ export const QueuePage: React.FC = () => {
     setDeleteButtonDisabled(false);
     setIsDeleteButtonLoading(false);
 
-    console.log('queue', queue)
-    console.log('head', queue.getHead())
-    console.log('tail', queue.getTail())
   }
 
   const handleClearButton = () => {
@@ -95,10 +88,6 @@ export const QueuePage: React.FC = () => {
 
     setHead(queue.getHead());
     setTail(queue.getTail());
-
-    console.log('queue', queue)
-    console.log('head', queue.getHead())
-    console.log('tail', queue.getTail())
   }
 
   return (
