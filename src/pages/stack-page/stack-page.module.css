@@ -14,8 +14,9 @@
 
 .performanceContainer {
   display: flex;
+  justify-content: center;
   gap: 16px;
-  margin-top: 120px;
+  margin: 52px auto 0;
   padding: 0;
   max-width: 1040px;
 }
