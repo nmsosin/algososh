@@ -12,8 +12,8 @@ interface IQueue<T>{
 
 export class Queue<T> implements IQueue<T> {
   private container: T[] = Array<T>(7)
-  head = 0;
-  tail = 0;
+  private head = 0;
+  private tail = 0;
   constructor (initialArray: T[]) {
     this.container = initialArray;
   }

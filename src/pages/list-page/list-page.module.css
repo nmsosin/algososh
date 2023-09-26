@@ -37,7 +37,20 @@
 
 .circle {
   list-style-type: none;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.subCircleTop {
+  position: absolute;
+  left: 12px;
+  top: -68px;
+}
+
+.subCircleBottom {
+  position: absolute;
+  left: 12px;
+  bottom: -68px;
 }
