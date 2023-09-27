@@ -9,7 +9,7 @@ import {waitForDelay} from "../../services/utils";
 import {DELAY_IN_MS} from "../../constants/delays";
 
 type TLetter = {
-  value?: string;
+  value: string;
   state?: ElementStates;
 }
 
@@ -28,7 +28,7 @@ export const StringComponent: React.FC = () => {
   const replaceCircles = async (inputValue: string) => {
     const letters = inputValue.split('');
 
-    let circlesArray: any[] = [];
+    let circlesArray: TLetter[] = [];
     for (let i = 0; i < letters.length; i++) {
       circlesArray.push({
         value: letters[i],

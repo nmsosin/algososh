@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {SolutionLayout} from "../../components/ui/solution-layout/solution-layout";
 import sortingPageStyles from "./sorting-page.module.css";
 import {Button} from "../../components/ui/button/button";
@@ -15,9 +15,15 @@ export const SortingPage: React.FC = () => {
   const [numbers, setNumbers] = useState<TSortingColumns[]>([])
   const [sortingType, setSortingType] = useState<string>('selection');
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<'asc' | 'desc' | null>(null);
 
-  const setRandomNumbers = (): void => {
+  useEffect(() => {
+    if (numbers.length === 0) {
+      setNumbers(getRandomNumbers(MIN_ARR_VALUE, MAX_ARR_VALUE))
+    }
+  }, []);
+
+  const handleSetRandomNumbers = (): void => {
     setNumbers(getRandomNumbers(MIN_ARR_VALUE, MAX_ARR_VALUE))
   }
 
@@ -60,7 +66,7 @@ export const SortingPage: React.FC = () => {
       setNumbers([...tempArr]);
     }
     setButtonDisabled(false);
-    setIsLoading(false);
+    setIsLoading(null);
   }
 
   const bubbleSorting = async (array: TSortingColumns[], order: string) => {
@@ -89,12 +95,16 @@ export const SortingPage: React.FC = () => {
 
     }
     setButtonDisabled(false);
-    setIsLoading(false);
+    setIsLoading(null);
   }
 
   const handleAscendingOrderClick = async () => {
     setButtonDisabled(true);
-    setIsLoading(true);
+    setIsLoading('asc');
+
+    if (numbers.length === 0) {
+      setNumbers(getRandomNumbers(MIN_ARR_VALUE, MAX_ARR_VALUE))
+    }
     switch (sortingType) {
       case 'selection':
         await selectionSorting(numbers, 'ascending');
@@ -109,7 +119,7 @@ export const SortingPage: React.FC = () => {
 
   const handleDescendingOrderClick = async () => {
     setButtonDisabled(true);
-    setIsLoading(true);
+    setIsLoading('desc');
     switch (sortingType) {
       case 'selection':
         await selectionSorting(numbers, 'descending');
@@ -148,22 +158,21 @@ export const SortingPage: React.FC = () => {
             sorting={Direction.Ascending}
             onClick={handleAscendingOrderClick}
             disabled={buttonDisabled}
-            isLoader={isLoading}
+            isLoader={isLoading === 'asc'}
           />
           <Button
             text={'По убыванию'}
             sorting={Direction.Descending}
             onClick={handleDescendingOrderClick}
             disabled={buttonDisabled}
-            isLoader={isLoading}
+            isLoader={isLoading === 'desc'}
           />
         </div>
 
         <Button
           text={'Новый массив'}
-          onClick={setRandomNumbers}
+          onClick={handleSetRandomNumbers}
           disabled={buttonDisabled}
-          isLoader={isLoading}
         />
       </div>
 

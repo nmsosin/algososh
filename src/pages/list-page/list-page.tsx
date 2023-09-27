@@ -21,7 +21,7 @@ type TSubCircle = {
 }
 
 export const ListPage: React.FC = () => {
-  const [linkedListData, setLinkedListData] = useState<any[]>([]);
+  const [linkedListData, setLinkedListData] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
   const [inputIndex, setInputIndex] = useState<number | undefined>(0);
   const [head, setHead] = useState<number | null>(linkedList.getHead());
@@ -40,14 +40,14 @@ export const ListPage: React.FC = () => {
     console.log(highlightedIndex);
   }, [highlightedIndex])
 
-  useEffect(() => {
-    setLinkedListData(linkedList.getListValues().map((item) => {
-      return {
-        value: item,
-        state: ElementStates.Changing,
-      }
-    }))
-  }, [])
+  // useEffect(() => {
+  //   setLinkedListData(linkedList.getListValues().map((item) => {
+  //     return {
+  //       value: item,
+  //       state: ElementStates.Changing,
+  //     }
+  //   }))
+  // }, [])
 
   const handleInputValueChange = (evt: FormEvent<HTMLInputElement>) => {
     evt.preventDefault();
