@@ -15,7 +15,7 @@ export const FibonacciPage: React.FC = () => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const isInputValid = typeof index !== 'number' || !index || index && index > 19 || index <= 0 ;
+  const isInputInvalid = typeof index !== 'number' || !index || index && index > 19 || index <= 0 ;
 
   const handleInputChange = (evt: FormEvent<HTMLInputElement>) => {
     setIndex(evt.currentTarget.valueAsNumber);
@@ -58,7 +58,7 @@ export const FibonacciPage: React.FC = () => {
           <Button
             text={'Рассчитать'}
             type={'submit'}
-            disabled={isInputValid || buttonDisabled}
+            disabled={isInputInvalid || buttonDisabled}
             isLoader={isLoading}
           />
         </div>

@@ -19,6 +19,8 @@ export const StringComponent: React.FC = () => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const isInputInvalid = !inputValue || inputValue.length === 0 || inputValue.length > 19;
+
   const handleInputChange = (evt: FormEvent<HTMLInputElement>) => {
     setInputValue(evt.currentTarget.value.trim())
   }
@@ -85,7 +87,7 @@ export const StringComponent: React.FC = () => {
           <Button
             text={'Развернуть'}
             type={'submit'}
-            disabled={buttonDisabled}
+            disabled={isInputInvalid || buttonDisabled}
             isLoader={isLoading}
           />
         </div>
