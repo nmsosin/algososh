@@ -11,10 +11,12 @@ import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 
 export const FibonacciPage: React.FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
-  const [index, setIndex] = useState<number>(0);
+  const [index, setIndex] = useState<number | null>(null);
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  
+
+  const isInputValid = typeof index !== 'number' || !index || index && index > 19 || index <= 0 ;
+
   const handleInputChange = (evt: FormEvent<HTMLInputElement>) => {
     setIndex(evt.currentTarget.valueAsNumber);
   }
@@ -36,8 +38,9 @@ export const FibonacciPage: React.FC = () => {
     evt.preventDefault();
     setButtonDisabled(true);
     setIsLoading(true);
-
-    addFibNumber(index);
+    if (index) {
+      addFibNumber(index);
+    }
   }
 
   return (
@@ -55,7 +58,7 @@ export const FibonacciPage: React.FC = () => {
           <Button
             text={'Рассчитать'}
             type={'submit'}
-            disabled={buttonDisabled}
+            disabled={isInputValid || buttonDisabled}
             isLoader={isLoading}
           />
         </div>
