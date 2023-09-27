@@ -23,31 +23,25 @@ type TSubCircle = {
 export const ListPage: React.FC = () => {
   const [linkedListData, setLinkedListData] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
-  const [inputIndex, setInputIndex] = useState<number | undefined>(0);
+  const [inputIndex, setInputIndex] = useState<number | undefined | ''>('');
   const [head, setHead] = useState<number | null>(linkedList.getHead());
   const [tail, setTail] = useState<number | null>(linkedList.getTail());
 
-  const [highlightedIndex, setHighlightedIndex] = useState<number[]>([]);
+  let highlightedIndexes: number[] = [];
+  const [highlightedIndex, setHighlightedIndex] = useState<number[]>(highlightedIndexes);
   const [subCircle, setSubCircle] = useState<TSubCircle | null>(null);
   const [modifiedIndex, setModifiedIndex] = useState<number | null>(null);
 
   const [addButtonDisabled, setAddButtonDisabled] = useState<boolean>(false);
   const [deleteButtonDisabled, setDeleteButtonDisabled] = useState<boolean>(false);
-  const [isAddButtonLoading, setIsAddButtonLoading] = useState<boolean>(false);
-  const [isDeleteButtonLoading, setIsDeleteButtonLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<'AH' | 'AT' | 'DH' | 'DT' | 'AI' | 'DI' | null>(null);
+
+  const isInputIndexValidForAdd = inputIndex ? inputIndex <= 0 || inputValue.length < 1 || inputIndex > linkedListData.length - 1 : false;
+  const isInputIndexValidForDel = inputIndex ? inputIndex > linkedListData.length - 1  || inputIndex <= 0 : false;
 
   useEffect(() => {
-    console.log(highlightedIndex);
-  }, [highlightedIndex])
-
-  // useEffect(() => {
-  //   setLinkedListData(linkedList.getListValues().map((item) => {
-  //     return {
-  //       value: item,
-  //       state: ElementStates.Changing,
-  //     }
-  //   }))
-  // }, [])
+    setLinkedListData(linkedList.getListValues());
+  }, [])
 
   const handleInputValueChange = (evt: FormEvent<HTMLInputElement>) => {
     evt.preventDefault();
@@ -61,6 +55,7 @@ export const ListPage: React.FC = () => {
 
   // add button handlers
   const handleAddToHeadButton = async (input: string) => {
+    setIsLoading('AH');
     setSubCircle({
       value: input,
       index: 0,
@@ -84,9 +79,11 @@ export const ListPage: React.FC = () => {
     setHead(linkedList.getHead())
     setTail(linkedList.getTail());
     setInputValue('');
+    setIsLoading(null);
   }
 
   const handleAddToTailButton = async (input: string) => {
+    setIsLoading('AT');
     setSubCircle({
       value: input,
       index: linkedList.getTail(),
@@ -110,12 +107,14 @@ export const ListPage: React.FC = () => {
     setHead(linkedList.getHead())
     setTail(linkedList.getTail());
     setInputValue('');
+    setIsLoading(null);
   }
 
-  const handleAddByIndexButton = async (input: string, index?: number) => {
-    let highlightedIndexes: number[] = [];
+  const handleAddByIndexButton = async (input: string, index?: number | '') => {
+    setIsLoading('AI');
+
     if (index && input) {
-      for (let i = 0; i <= index; i++) {
+      for (let i = 1; i <= index; i++) {
         await waitForDelay(SHORT_DELAY_IN_MS);
         setSubCircle({
           value: input,
@@ -124,7 +123,7 @@ export const ListPage: React.FC = () => {
           position: 'top',
         });
 
-        highlightedIndexes.push(i-1);
+        highlightedIndexes.push(i - 1);
         setHighlightedIndex(highlightedIndexes);
       }
 
@@ -142,10 +141,12 @@ export const ListPage: React.FC = () => {
       setLinkedListData(linkedList.getListValues());
       setInputValue('');
     }
+    setIsLoading(null);
   }
 
   // delete button handlers
   const handleDeleteFromHeadButton = async () => {
+    setIsLoading('DH');
     setSubCircle({
       value: linkedList.getListValues()[0],
       index: 0,
@@ -160,9 +161,11 @@ export const ListPage: React.FC = () => {
 
     setHead(linkedList.getHead());
     setTail(linkedList.getTail());
+    setIsLoading(null);
   }
 
   const handleDeleteFromTailButton = async () => {
+    setIsLoading('DT');
     setSubCircle({
       value: linkedList.getListValues()[tail!],
       index: tail!,
@@ -176,16 +179,19 @@ export const ListPage: React.FC = () => {
     setSubCircle(null);
 
     setTail(linkedList.getTail());
+    setIsLoading(null);
   }
 
-  const handleDeleteByIndexButton = async (index: number | undefined) => {
-    let temp: number[] = [];
+  const handleDeleteByIndexButton = async (index?: number | '') => {
+    setIsLoading('DI');
+
 
     if (index) {
-      for (let i = 0; i <= index; i++) {
+      for (let i = 0; i < index; i++) {
         await waitForDelay(SHORT_DELAY_IN_MS);
-        setHighlightedIndex(temp);
-        temp.push(i);
+        highlightedIndexes.push(i);
+        console.log(highlightedIndexes)
+        setHighlightedIndex([...highlightedIndexes]);
       }
 
       await waitForDelay(SHORT_DELAY_IN_MS);
@@ -204,6 +210,7 @@ export const ListPage: React.FC = () => {
       setSubCircle(null);
       setTail(linkedList.getTail());
     }
+    setIsLoading(null);
   }
 
   return (
@@ -223,28 +230,28 @@ export const ListPage: React.FC = () => {
             text={"Добавить в head"}
             onClick={() => handleAddToHeadButton(inputValue)}
             disabled={inputValue.length < 1 || addButtonDisabled}
-            isLoader={isAddButtonLoading}
+            isLoader={isLoading === 'AH'}
             extraClass={listPageStyles.valueButton}
           />
           <Button
             text={"Добавить в tail"}
             onClick={() => handleAddToTailButton(inputValue)}
             disabled={inputValue.length < 1 || addButtonDisabled}
-            isLoader={isAddButtonLoading}
+            isLoader={isLoading === 'AT'}
             extraClass={listPageStyles.valueButton}
           />
           <Button
             text={"Удалить из head"}
             onClick={() => handleDeleteFromHeadButton()}
             disabled={deleteButtonDisabled}
-            isLoader={isDeleteButtonLoading}
+            isLoader={isLoading === 'DH'}
             extraClass={listPageStyles.valueButton}
           />
           <Button
             text={"Удалить из tail"}
             onClick={() => handleDeleteFromTailButton()}
             disabled={deleteButtonDisabled}
-            isLoader={isDeleteButtonLoading}
+            isLoader={isLoading === 'DT'}
             extraClass={listPageStyles.valueButton}
           />
         </div>
@@ -263,15 +270,15 @@ export const ListPage: React.FC = () => {
           <Button
             text={"Добавить по индексу"}
             onClick={() => handleAddByIndexButton(inputValue, inputIndex)}
-            disabled={!inputIndex || inputValue.length < 1}
-            isLoader={isAddButtonLoading}
+            disabled={isInputIndexValidForAdd}
+            isLoader={isLoading === 'AI'}
             extraClass={listPageStyles.indexButton}
           />
           <Button
             text={"Удалить по индексу"}
             onClick={() => handleDeleteByIndexButton(inputIndex)}
-            disabled={deleteButtonDisabled}
-            isLoader={isDeleteButtonLoading}
+            disabled={deleteButtonDisabled || isInputIndexValidForDel}
+            isLoader={isLoading === 'DI'}
             extraClass={listPageStyles.indexButton}
           />
         </div>

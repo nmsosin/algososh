@@ -55,7 +55,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     }
   };
   pushByIndex = (input: string, index?: number) => {
-    if (index && this.container.length > index && typeof input === 'string' && input.length > 0) {
+    if (index && this.container.length >= index && typeof input === 'string' && input.length > 0) {
       this.container.splice(index, 0, input)
       this.tail = this.getLength() - 1;
     }
@@ -73,7 +73,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     }
   };
   popByIndex = (index: number | undefined) => {
-    if (index && this.container.length > index) {
+    if (index && this.container.length >= index) {
       this.container.splice(index, 1)
       this.tail = this.getLength() - 1;
     }

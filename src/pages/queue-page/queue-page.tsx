@@ -35,10 +35,6 @@ export const QueuePage: React.FC = () => {
   }
 
   useEffect(() => {
-    setAddButtonDisabled(inputValue.trim().length === 0)
-  }, [])
-
-  useEffect(() => {
     if (tail >= MAX_QUEUE_LENGTH) {
       setAddButtonDisabled(true)
     }
@@ -49,8 +45,9 @@ export const QueuePage: React.FC = () => {
   }, [tail, head])
 
   const handleAddButton = async (inputValue: string) => {
-    setAddButtonDisabled(true)
-    setIsAddButtonLoading(true)
+    setAddButtonDisabled(true);
+    setDeleteButtonDisabled(true);
+    setIsAddButtonLoading(true);
     if (inputValue) {
       queue.enqueue(inputValue);
     }
@@ -62,11 +59,14 @@ export const QueuePage: React.FC = () => {
     await waitForDelay(DELAY_IN_MS);
     setHighlightedIndex(null);
 
-    setAddButtonDisabled(false)
-    setIsAddButtonLoading(false)
+    setInputValue('');
+    setAddButtonDisabled(false);
+    setDeleteButtonDisabled(false);
+    setIsAddButtonLoading(false);
   }
 
   const handleDeleteButton = async () => {
+    setAddButtonDisabled(true);
     setDeleteButtonDisabled(true);
     setIsDeleteButtonLoading(true);
 
@@ -78,6 +78,7 @@ export const QueuePage: React.FC = () => {
     setHead(queue.getHead());
     setTail(queue.getTail());
 
+    setAddButtonDisabled(false);
     setDeleteButtonDisabled(false);
     setIsDeleteButtonLoading(false);
 
@@ -104,7 +105,7 @@ export const QueuePage: React.FC = () => {
           <Button
             text={"Добавить"}
             onClick={() => handleAddButton(inputValue)}
-            disabled={addButtonDisabled}
+            disabled={inputValue.trim().length === 0 || addButtonDisabled}
             isLoader={isAddButtonLoading}
           />
           <Button
