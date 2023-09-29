@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b2e7a6c4-a521-4782-bd9f-1323a5b164e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/linked-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/linked-list.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +15,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -45,6 +49,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cypress/e2e" />
       <recent name="$PROJECT_DIR$/src/pages" />
     </key>
   </component>
@@ -63,6 +68,9 @@
       <workItem from="1693998166253" duration="1182000" />
       <workItem from="1694107703180" duration="25000" />
       <workItem from="1694515954823" duration="129099000" />
+      <workItem from="1695967049298" duration="311000" />
+      <workItem from="1695967671152" duration="28000" />
+      <workItem from="1695970599295" duration="3000" />
     </task>
     <servers />
   </component>
