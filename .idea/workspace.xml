@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b2e7a6c4-a521-4782-bd9f-1323a5b164e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/string/string.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/string/string.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

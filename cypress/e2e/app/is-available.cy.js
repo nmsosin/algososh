@@ -1,29 +1,32 @@
-describe('Проверка доступности всех страниц приложения', function() {
-  it('Главная страница доступна', function() {
+describe('App works correctly with routes', function() {
+  before(function() {
     cy.visit('http://localhost:3000/');
+  })
+  it('should open main page by default', function() {
     cy.get('h1').contains('МБОУ АЛГОСОШ');
   });
-  it('Страница алгоритма разворота строки доступна', function() {
+
+  it('string reverse page is available', function() {
     cy.visit('http://localhost:3000/recursion');
     cy.get('h3').contains('Строка');
   });
-  it('Страница алгоритма поиска числа фибоначчи доступна', function() {
+  it('fibonacci page is available', function() {
     cy.visit('http://localhost:3000/fibonacci');
     cy.get('h3').contains('Последовательность Фибоначчи');
   });
-  it('Страница алгоритма сортировки массива доступна', function() {
+  it('array sort page is available', function() {
     cy.visit('http://localhost:3000/sorting');
     cy.get('h3').contains('Сортировка массива');
   });
-  it('Страница алгоритма работы со стеком доступна', function() {
+  it('stack page is available', function() {
     cy.visit('http://localhost:3000/stack');
     cy.get('h3').contains('Стек');
   });
-  it('Страница алгоритма работы с очередью доступна', function() {
+  it('queue page is available', function() {
     cy.visit('http://localhost:3000/queue');
     cy.get('h3').contains('Очередь');
   });
-  it('Страница алгоритма работы со связным списком доступна', function() {
+  it('linked list page is available', function() {
     cy.visit('http://localhost:3000/list');
     cy.get('h3').contains('Связный список');
   });

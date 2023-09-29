@@ -7,8 +7,9 @@ import {Circle} from "../../components/ui/circle/circle";
 import {ElementStates} from "../../types/element-states";
 import {waitForDelay} from "../../services/utils";
 import {DELAY_IN_MS} from "../../constants/delays";
+import {iterativeReverse} from "../../services/string";
 
-type TLetter = {
+export type TLetter = {
   value: string;
   state?: ElementStates;
 }
@@ -26,41 +27,7 @@ export const StringComponent: React.FC = () => {
   }
 
   const replaceCircles = async (inputValue: string) => {
-    const letters = inputValue.split('');
-
-    let circlesArray: TLetter[] = [];
-    for (let i = 0; i < letters.length; i++) {
-      circlesArray.push({
-        value: letters[i],
-        state: ElementStates.Default
-      })
-    }
-
-    setCircles(circlesArray);
-
-    let start = 0;
-    let end = circlesArray.length - 1;
-
-    while (start <= end) {
-      let tempStr = '';
-
-      await waitForDelay(DELAY_IN_MS)
-      circlesArray[start].state = ElementStates.Changing;
-      circlesArray[end].state = ElementStates.Changing;
-      setCircles([...circlesArray]);
-
-      await waitForDelay(DELAY_IN_MS)
-      tempStr = circlesArray[start].value;
-      circlesArray[start].value = circlesArray[end].value;
-      circlesArray[end].value = tempStr;
-
-      circlesArray[start].state = ElementStates.Modified;
-      circlesArray[end].state = ElementStates.Modified;
-
-      start++;
-      end--;
-      setCircles([...circlesArray]);
-    }
+    await iterativeReverse(inputValue, setCircles);
 
     setButtonDisabled(false);
     setIsLoading(false);
