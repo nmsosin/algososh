@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2e7a6c4-a521-4782-bd9f-1323a5b164e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/string-page/string.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/e2e/2-advanced-examples/misc.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/2-advanced-examples/misc.cy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/e2e/2-advanced-examples/storage.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/2-advanced-examples/storage.cy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/e2e/2-advanced-examples/utilities.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/2-advanced-examples/utilities.cy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/support/commands.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/support/commands.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fibonacci-page/fibonacci-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sorting-page/sorting-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/string/string.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/string-page/string.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/string/string.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/string/string.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/string-page/string.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/sorting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/sorting.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/string.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/string.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +71,7 @@
       <workItem from="1695967049298" duration="311000" />
       <workItem from="1695967671152" duration="28000" />
       <workItem from="1695970599295" duration="3000" />
-      <workItem from="1696506536215" duration="8443000" />
+      <workItem from="1696506536215" duration="11521000" />
     </task>
     <servers />
   </component>
