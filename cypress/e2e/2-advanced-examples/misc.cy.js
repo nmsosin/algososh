@@ -25,7 +25,7 @@ context('Misc', () => {
     // your test outside the scope of Cypress.
     // https://on.cypress.io/exec
 
-    // we can use Cypress.platform string to
+    // we can use Cypress.platform string-page to
     // select appropriate command
     // https://on.cypress/io/platform
     cy.log(`Platform ${Cypress.platform} architecture ${Cypress.arch}`)

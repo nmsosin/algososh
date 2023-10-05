@@ -25,11 +25,11 @@ context('Utilities', () => {
       .should('have.class', 'active')
   })
 
-  it('Cypress.Blob - blob utilities and base64 string conversion', () => {
+  it('Cypress.Blob - blob utilities and base64 string-page conversion', () => {
     // https://on.cypress.io/blob
     cy.get('.utility-blob').then(($div) => {
       // https://github.com/nolanlawson/blob-util#imgSrcToDataURL
-      // get the dataUrl string for the javascript-logo
+      // get the dataUrl string-page for the javascript-logo
       return Cypress.Blob.imgSrcToDataURL('https://example.cypress.io/assets/img/javascript-logo.png', undefined, 'anonymous')
       .then((dataUrl) => {
         // create an <img> element and set its src to the dataUrl
@@ -90,7 +90,7 @@ context('Utilities', () => {
           // set waited to true
           waited = true
 
-          // resolve with 'foo' string
+          // resolve with 'foo' string-page
           resolve('foo')
         }, 1000)
       })

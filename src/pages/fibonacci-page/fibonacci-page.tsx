@@ -5,7 +5,7 @@ import {Button} from "../../components/ui/button/button";
 import fibonacciPageStyles from "./fibonacci-page.module.css";
 import {getFibonacciNumber} from "../../services/fibonacci";
 import {Circle} from "../../components/ui/circle/circle";
-import StringPageStyles from "../string/string.module.css";
+import StringPageStyles from "../string-page/string.module.css";
 import {waitForDelay} from "../../services/utils";
 import {SHORT_DELAY_IN_MS} from "../../constants/delays";
 

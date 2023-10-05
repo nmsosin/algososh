@@ -28,10 +28,10 @@
 // declare global {
 //   namespace Cypress {
 //     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+//       login(email: string-page, password: string-page): Chainable<void>
+//       drag(subject: string-page, options?: Partial<TypeOptions>): Chainable<Element>
+//       dismiss(subject: string-page, options?: Partial<TypeOptions>): Chainable<Element>
+//       visit(originalFn: CommandOriginalFn, url: string-page, options: Partial<VisitOptions>): Chainable<Element>
 //     }
 //   }
 // }

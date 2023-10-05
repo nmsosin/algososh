@@ -2,7 +2,7 @@ import React from "react";
 import {waitForDelay} from "./utils";
 import {DELAY_IN_MS} from "../constants/delays";
 import {ElementStates} from "../types/element-states";
-import {TLetter} from "../pages/string/string";
+import {TLetter} from "../pages/string-page/string";
 
 export const iterativeReverse = async (inputValue: string, setter?: React.Dispatch<React.SetStateAction<TLetter[]>> ) => {
   const letters = inputValue.split('');
@@ -22,8 +22,6 @@ export const iterativeReverse = async (inputValue: string, setter?: React.Dispat
 
   let tempStr = '';
   while (start <= end) {
-
-    await waitForDelay(DELAY_IN_MS);
     circlesArray[start].state = ElementStates.Changing;
     circlesArray[end].state = ElementStates.Changing;
     setter!([...circlesArray]);
@@ -45,9 +43,8 @@ export const iterativeReverse = async (inputValue: string, setter?: React.Dispat
   for (let i = 0; i < circlesArray.length; i++) {
     resultArr.push(circlesArray[i].value);
   }
-  let result = resultArr.join('');
-  console.log(result)
-  return result;
+
+  return resultArr;
 }
 
 export const testIterativeReverse = (inputValue: string) => {

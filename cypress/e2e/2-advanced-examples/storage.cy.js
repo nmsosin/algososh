@@ -29,7 +29,7 @@ context('Local Storage / Session Storage', () => {
       expect(localStorage.getItem('prop3')).to.eq('magenta')
     })
 
-    // Clear key matching string in localStorage
+    // Clear key matching string-page in localStorage
     cy.clearLocalStorage('prop1').should((ls) => {
       expect(ls.getItem('prop1')).to.be.null
       expect(ls.getItem('prop2')).to.eq('blue')

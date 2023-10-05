@@ -6,7 +6,7 @@ describe('App works correctly with routes', function() {
     cy.get('h1').contains('МБОУ АЛГОСОШ');
   });
 
-  it('string reverse page is available', function() {
+  it('string-page reverse page is available', function() {
     cy.visit('http://localhost:3000/recursion');
     cy.get('h3').contains('Строка');
   });

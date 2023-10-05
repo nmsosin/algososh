@@ -5,8 +5,6 @@ import {Input} from "../../components/ui/input/input";
 import StringPageStyles from './string.module.css'
 import {Circle} from "../../components/ui/circle/circle";
 import {ElementStates} from "../../types/element-states";
-import {waitForDelay} from "../../services/utils";
-import {DELAY_IN_MS} from "../../constants/delays";
 import {iterativeReverse} from "../../services/string";
 
 export type TLetter = {

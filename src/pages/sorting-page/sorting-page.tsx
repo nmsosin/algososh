@@ -59,7 +59,7 @@ export const SortingPage: React.FC = () => {
         tempArr[i].state = ElementStates.Modified;
         setNumbers([...tempArr]);
       } else {
-        tempArr = swapItems(tempArr, i, min);
+        tempArr = swapItems(tempArr, i, min) as TSortingColumns[];
         tempArr[min].state = ElementStates.Default;
         tempArr[i].state = ElementStates.Modified;
       }
@@ -82,7 +82,7 @@ export const SortingPage: React.FC = () => {
 
         await waitForDelay(DELAY_IN_MS);
         if (order === 'ascending' ? tempArr[j].value > tempArr[j + 1].value : tempArr[j].value < tempArr[j + 1].value) {
-          tempArr = swapItems(tempArr, j, j + 1);
+          tempArr = swapItems(tempArr, j, j + 1) as TSortingColumns[];
         }
           tempArr[j].state = ElementStates.Default;
           if (tempArr[j + 1]) {
