@@ -57,11 +57,13 @@ export const StringComponent: React.FC = () => {
           />
         </div>
 
-        <ul className={StringPageStyles.performanceContainer}>
+        <ul
+          data-testid='circles'
+          className={StringPageStyles.performanceContainer}>
           { circles.length > 0 &&
             circles.map((item, index) => {
               return (
-                <li key={index} className={StringPageStyles.circle}>
+                <li key={index} className={StringPageStyles.circle} data-testid='circle'>
                   <Circle
                     letter={item.value}
                     state={item.state}

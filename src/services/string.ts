@@ -22,6 +22,7 @@ export const iterativeReverse = async (inputValue: string, setter?: React.Dispat
 
   let tempStr = '';
   while (start <= end) {
+    // await waitForDelay(DELAY_IN_MS);
     circlesArray[start].state = ElementStates.Changing;
     circlesArray[end].state = ElementStates.Changing;
     setter!([...circlesArray]);
