@@ -1,7 +1,7 @@
 import {CHANGING, DEFAULT, MODIFIED} from "../../constants";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
-describe('String component', () => {
+describe('String page component', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/recursion');
   })
@@ -34,16 +34,11 @@ describe('String component', () => {
       },
     ];
 
-
-    const initialArr = testString.trim().split('');
-
     cy.get('form').within(() => {
       cy.get('input').type(testString);
       cy.get('button').click();
     });
 
-    cy.get("[data-testid=\'circles\']").as('circles');
-    cy.get("[data-testid=\'circle\']").as('circle');
     cy.get("[data-testid=\'circleBorder\']").as('border');
 
     // iterative render circles with letter values and changing its state
