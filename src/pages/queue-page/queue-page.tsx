@@ -15,9 +15,7 @@ type TQueueValue = {
   state?: ElementStates;
   head?: number;
   tail?: number
-
 }
-
 
 export const QueuePage: React.FC = () => {
   const [inputValue, setInputValue] = useState<string >('');
@@ -118,6 +116,7 @@ export const QueuePage: React.FC = () => {
         <Button
           text={"Очистить"}
           onClick={() => handleClearButton()}
+          disabled={queue.getTail() === 0}
         />
       </form>
       <ul className={queuePageStyles.performanceContainer}>
