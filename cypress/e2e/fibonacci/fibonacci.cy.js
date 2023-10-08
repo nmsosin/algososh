@@ -36,7 +36,7 @@ describe('Fibonacci page component', () => {
 
     cy.get('form').within(() => {
       cy.get('input').type(testInputValue);
-      cy.get('button').click();
+      cy.get('button').should('not.be.disabled').click();
     });
 
     cy.get("[data-testid=\'circleBorder\']").as('border');
