@@ -1,9 +1,9 @@
-import {CHANGING, DEFAULT, MODIFIED} from "../../constants";
+import {CHANGING, border, DEFAULT, MODIFIED} from "../../constants";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 describe('String page component', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/recursion');
+    cy.visit('/recursion');
   })
 
   it('disable action button if input is empty', () => {
@@ -39,14 +39,12 @@ describe('String page component', () => {
       cy.get('button').click();
     });
 
-    cy.get("[data-testid=\'circleBorder\']").as('border');
-
     // iterative render circles with letter values and changing its state
     for (let i = 0; i < steps.length; i++) {
-      cy.wait(SHORT_DELAY_IN_MS);
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         cy.get($el).should('have.css', 'border-color', steps[i].states[index]).contains(steps[i].letters[index]);
       });
+      cy.wait(SHORT_DELAY_IN_MS);
     }
   });
 })

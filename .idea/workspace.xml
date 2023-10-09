@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b2e7a6c4-a521-4782-bd9f-1323a5b164e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/fibonacci/fibonacci.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/fibonacci/fibonacci.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/list/list.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/list/list.cy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/e2e/queue/queue.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/queue/queue.cy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/e2e/stack/stack.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/stack/stack.cy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/string/string.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/string/string.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/circle/__snapshots__/circle.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/circle/__snapshots__/circle.test.js.snap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

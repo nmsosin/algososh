@@ -1,4 +1,4 @@
-import {CHANGING, DEFAULT} from "../../constants";
+import {CHANGING, border, circleHead, circleIndex, DEFAULT} from "../../constants";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 const testInputValues = ['a', 'b'];
@@ -40,7 +40,7 @@ const deletionSteps = [
 
 describe('Stack page component', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/stack');
+    cy.visit('stack');
 
     cy.get('form').within(() => {
       cy.contains('Добавить').as('addButton');
@@ -67,15 +67,12 @@ describe('Stack page component', () => {
       cy.get('@addButton').should('not.be.disabled').click();
     });
 
-    cy.get("[data-testid=\'circleBorder\']").as('border');
-    cy.get("[data-testid=\'circleIndex\']").as('index');
-    cy.get("[data-testid=\'circleHead\']").as('head');
 
     for (let i = 0; i < additionSteps.length / (testInputValues.length); i++) {
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         cy.get($el).should('have.css', 'border-color', additionSteps[i].states[index]).contains(additionSteps[i].values[index]);
-        cy.get('@index').contains(index);
-        additionSteps[i].heads[index] ? cy.get($el).get('@head').contains('top') : cy.get($el).get('@head').should('be.empty');
+        cy.get(circleIndex).contains(index);
+        additionSteps[i].heads[index] ? cy.get($el).get(circleHead).contains('top') : cy.get($el).get(circleHead).should('be.empty');
       });
       cy.wait(SHORT_DELAY_IN_MS);
     };
@@ -86,15 +83,11 @@ describe('Stack page component', () => {
       cy.get('@addButton').should('not.be.disabled').click();
     });
 
-    cy.get("[data-testid=\'circleBorder\']").as('border');
-    cy.get("[data-testid=\'circleIndex\']").as('index');
-    cy.get("[data-testid=\'circleHead\']").as('head');
-
     for (let i = 2; i < additionSteps.length; i++) {
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         cy.get($el).should('have.css', 'border-color', additionSteps[i].states[index]).contains(additionSteps[i].values[index]);
-        cy.get('@index').contains(index);
-        additionSteps[i].heads[index] ? cy.get($el).get('@head').contains('top') : cy.get($el).get('@head').should('be.empty');
+        cy.get(circleIndex).contains(index);
+        additionSteps[i].heads[index] ? cy.get($el).get(circleHead).contains('top') : cy.get($el).get(circleHead).should('be.empty');
       });
       cy.wait(SHORT_DELAY_IN_MS);
     };
@@ -105,15 +98,11 @@ describe('Stack page component', () => {
       cy.get('@deleteButton').should('not.be.disabled').click();
     });
 
-    cy.get("[data-testid=\'circleBorder\']").as('border');
-    cy.get("[data-testid=\'circleIndex\']").as('index');
-    cy.get("[data-testid=\'circleHead\']").as('head');
-
     for (let i = 0; i < deletionSteps.length; i++) {
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         cy.get($el).should('have.css', 'border-color', deletionSteps[i].states[index]).contains(deletionSteps[i].values[index]);
-        cy.get('@index').contains(index);
-        additionSteps[i].heads[index] ? cy.get($el).get('@head').contains('top') : cy.get($el).get('@head').should('be.empty');
+        cy.get(circleIndex).contains(index);
+        additionSteps[i].heads[index] ? cy.get($el).get(circleHead).contains('top') : cy.get($el).get(circleHead).should('be.empty');
       });
       cy.wait(SHORT_DELAY_IN_MS);
     };
@@ -124,8 +113,8 @@ describe('Stack page component', () => {
       cy.get('@clearButton').should('not.be.disabled').click();
     });
 
-    cy.get('@border').should('not.exist');
-    cy.get('@border').should('have.length', 0);
+    cy.get(border).should('not.exist');
+    cy.get(border).should('have.length', 0);
   });
 
 });

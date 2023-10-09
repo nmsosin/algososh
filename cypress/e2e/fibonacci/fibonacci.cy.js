@@ -1,9 +1,9 @@
-import {DEFAULT} from "../../constants";
+import {circleBorder, circleIndex, DEFAULT} from "../../constants";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 describe('Fibonacci page component', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/fibonacci');
+    cy.visit('fibonacci');
   })
 
   it('disable action button if input is empty', () => {
@@ -39,13 +39,10 @@ describe('Fibonacci page component', () => {
       cy.get('button').should('not.be.disabled').click();
     });
 
-    cy.get("[data-testid=\'circleBorder\']").as('border');
-    cy.get("[data-testid=\'circleIndex\']").as('index');
-
     for (let i = 0; i < steps.length; i++) {
-      cy.get('@border').each(($el, index) => {
+      cy.get(circleBorder).each(($el, index) => {
           cy.get($el).should('have.css', 'border-color', steps[i].states[index]).contains(steps[i].numbers[index]);
-          cy.get('@index').contains(index);
+          cy.get(circleIndex).contains(index);
       });
       cy.wait(SHORT_DELAY_IN_MS);
     };

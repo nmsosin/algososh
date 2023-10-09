@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { FibonacciPage } from "../../pages/fibonacci-page/fibonacci-page";
 import { ListPage } from "../../pages/list-page/list-page";
 import { MainPage } from "../../pages/main-page/main-page";
@@ -13,7 +13,7 @@ import "./app.css";
 function App() {
   return (
     <div className="app">
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/recursion" element={<StringComponent />} />
@@ -28,7 +28,7 @@ function App() {
           <Route path="/list" element={<ListPage />} />
 
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

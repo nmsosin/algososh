@@ -1,4 +1,4 @@
-import {CHANGING, DEFAULT} from "../../constants";
+import {CHANGING, border, circleHead, circleIndex, circleTail, DEFAULT} from "../../constants";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
 const testInputValues = ['a', 'b'];
@@ -54,19 +54,13 @@ const deletionSteps = [
 
 describe('Queue page component', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/queue');
+    cy.visit('queue');
 
     cy.get('form').within(() => {
       cy.contains('Добавить').as('addButton');
       cy.contains('Удалить').as('deleteButton');
       cy.contains('Очистить').as('clearButton');
     });
-
-    cy.get("[data-testid=\'circleBorder\']").as('border');
-    cy.get("[data-testid=\'circleIndex\']").as('index');
-    cy.get("[data-testid=\'circleHead\']").as('head');
-    cy.get("[data-testid=\'circleTail\']").as('tail');
-
   })
 
   it('disable action buttons if input & initial stack are empty', () => {
@@ -87,13 +81,13 @@ describe('Queue page component', () => {
     });
 
     for (let i = 0; i < additionSteps.length / (testInputValues.length); i++) {
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         additionSteps[i].values[index].length === 0
           ? cy.get($el).should('have.css', 'border-color', additionSteps[i].states[index]).should('have.text', '')
           : cy.get($el).should('have.css', 'border-color', additionSteps[i].states[index]).contains(additionSteps[i].values[index]);
-        cy.get('@index').contains(index);
-        additionSteps[i].heads[index] ? cy.get($el).get('@head').contains('head') : cy.get($el).get('@head').should('be.empty');
-        additionSteps[i].tails[index] ? cy.get($el).get('@tail').contains('tail') : cy.get($el).get('@tail').should('be.empty');
+        cy.get(circleIndex).contains(index);
+        additionSteps[i].heads[index] ? cy.get($el).get(circleHead).contains('head') : cy.get($el).get(circleHead).should('be.empty');
+        additionSteps[i].tails[index] ? cy.get($el).get(circleTail).contains('tail') : cy.get($el).get(circleTail).should('be.empty');
       });
       cy.wait(SHORT_DELAY_IN_MS);
     };
@@ -105,13 +99,13 @@ describe('Queue page component', () => {
     });
 
     for (let i = 2; i < additionSteps.length; i++) {
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         additionSteps[i].values[index].length === 0
           ? cy.get($el).should('have.css', 'border-color', additionSteps[i].states[index]).should('have.text', '')
           : cy.get($el).should('have.css', 'border-color', additionSteps[i].states[index]).contains(additionSteps[i].values[index]);
-        cy.get('@index').contains(index);
-        additionSteps[i].heads[index] ? cy.get($el).get('@head').contains('head') : cy.get($el).get('@head').should('be.empty');
-        additionSteps[i].tails[index] ? cy.get($el).get('@tail').contains('tail') : cy.get($el).get('@tail').should('be.empty');
+        cy.get(circleIndex).contains(index);
+        additionSteps[i].heads[index] ? cy.get($el).get(circleHead).contains('head') : cy.get($el).get(circleHead).should('be.empty');
+        additionSteps[i].tails[index] ? cy.get($el).get(circleTail).contains('tail') : cy.get($el).get(circleTail).should('be.empty');
 
       });
       cy.wait(SHORT_DELAY_IN_MS);
@@ -123,13 +117,13 @@ describe('Queue page component', () => {
     });
 
     for (let i = 0; i < deletionSteps.length; i++) {
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         deletionSteps[i].values[index].length === 0
           ? cy.get($el).should('have.css', 'border-color', deletionSteps[i].states[index]).should('have.text', '')
           : cy.get($el).should('have.css', 'border-color', deletionSteps[i].states[index]).contains(deletionSteps[i].values[index]);
-        cy.get('@index').contains(index);
-        deletionSteps[i].heads[index] ? cy.get($el).get('@head').contains('head') : cy.get($el).get('@head').should('be.empty');
-        deletionSteps[i].tails[index] ? cy.get($el).get('@tail').contains('tail') : cy.get($el).get('@tail').should('be.empty');
+        cy.get(circleIndex).contains(index);
+        deletionSteps[i].heads[index] ? cy.get($el).get(circleHead).contains('head') : cy.get($el).get(circleHead).should('be.empty');
+        deletionSteps[i].tails[index] ? cy.get($el).get(circleTail).contains('tail') : cy.get($el).get(circleTail).should('be.empty');
       });
       cy.wait(SHORT_DELAY_IN_MS);
     };
@@ -139,10 +133,10 @@ describe('Queue page component', () => {
       cy.get('@clearButton').should('not.be.disabled').click();
     });
 
-      cy.get('@border').each(($el, index) => {
+      cy.get(border).each(($el, index) => {
         cy.get($el).should('have.css', 'border-color', initialState.states[index]).should('have.text', '')
-        initialState.heads[index] ? cy.get($el).get('@head').contains('head') : cy.get($el).get('@head').should('be.empty');
-        initialState.tails[index] ? cy.get($el).get('@tail').contains('tail') : cy.get($el).get('@tail').should('be.empty');
+        initialState.heads[index] ? cy.get($el).get(circleHead).contains('head') : cy.get($el).get(circleHead).should('be.empty');
+        initialState.tails[index] ? cy.get($el).get(circleTail).contains('tail') : cy.get($el).get(circleTail).should('be.empty');
       });
   });
 
