@@ -1,6 +1,43 @@
 import {CHANGING, DEFAULT} from "../../constants";
 import {SHORT_DELAY_IN_MS} from "../../../src/constants/delays";
 
+const testInputValues = ['a', 'b'];
+const additionSteps = [
+  {
+    values: ['a'],
+    states: [CHANGING],
+    heads: [true]
+  },
+  {
+    values: ['a'],
+    states: [DEFAULT],
+    heads: [true]
+  },
+  {
+    values: ['a', 'b'],
+    states: [DEFAULT, CHANGING],
+    heads: [false, true]
+  },
+  {
+    values: ['a', 'b'],
+    states: [DEFAULT, DEFAULT],
+    heads: [false, true]
+  },
+];
+
+const deletionSteps = [
+  {
+    values: ['a', 'b'],
+    states: [DEFAULT, CHANGING],
+    heads: [false, true]
+  },
+  {
+    values: ['a'],
+    states: [DEFAULT],
+    head: [true]
+  },
+]
+
 describe('Stack page component', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/stack');
@@ -23,42 +60,6 @@ describe('Stack page component', () => {
   });
 
   it('performs item addition, item deletion & clearing stack correctly for valid input values', () => {
-    const testInputValues = ['a', 'b'];
-    const additionSteps = [
-      {
-        values: ['a'],
-        states: [CHANGING],
-        heads: [true]
-      },
-      {
-        values: ['a'],
-        states: [DEFAULT],
-        heads: [true]
-      },
-      {
-        values: ['a', 'b'],
-        states: [DEFAULT, CHANGING],
-        heads: [false, true]
-      },
-      {
-        values: ['a', 'b'],
-        states: [DEFAULT, DEFAULT],
-        heads: [false, true]
-      },
-    ];
-
-    const deletionSteps = [
-      {
-        values: ['a', 'b'],
-        states: [DEFAULT, CHANGING],
-        heads: [false, true]
-      },
-      {
-        values: ['a'],
-        states: [DEFAULT],
-        head: [true]
-      },
-    ]
 
     // Adding first item
     cy.get('form').within(() => {

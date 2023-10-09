@@ -36,8 +36,8 @@ export const ListPage: React.FC = () => {
   const [deleteButtonDisabled, setDeleteButtonDisabled] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<'AH' | 'AT' | 'DH' | 'DT' | 'AI' | 'DI' | null>(null);
 
-  const isInputIndexValidForAdd = inputIndex ? inputIndex <= 0 || inputValue.length < 1 || inputIndex > linkedListData.length - 1 : false;
-  const isInputIndexValidForDel = inputIndex ? inputIndex > linkedListData.length - 1  || inputIndex <= 0 : false;
+  const isInputIndexUnvalidForAdd = inputIndex ? inputIndex <= 0 || inputValue.length < 1 || inputIndex > linkedListData.length - 1 : true;
+  const isInputIndexUnvalidForDel = inputIndex ? inputIndex > linkedListData.length - 1  || inputIndex <= 0 : true;
 
   useEffect(() => {
     setLinkedListData(linkedList.getListValues());
@@ -270,14 +270,14 @@ export const ListPage: React.FC = () => {
           <Button
             text={"Добавить по индексу"}
             onClick={() => handleAddByIndexButton(inputValue, inputIndex)}
-            disabled={isInputIndexValidForAdd}
+            disabled={isInputIndexUnvalidForAdd}
             isLoader={isLoading === 'AI'}
             extraClass={listPageStyles.indexButton}
           />
           <Button
             text={"Удалить по индексу"}
             onClick={() => handleDeleteByIndexButton(inputIndex)}
-            disabled={deleteButtonDisabled || isInputIndexValidForDel}
+            disabled={deleteButtonDisabled || isInputIndexUnvalidForDel}
             isLoader={isLoading === 'DI'}
             extraClass={listPageStyles.indexButton}
           />
@@ -291,7 +291,7 @@ export const ListPage: React.FC = () => {
           linkedList && linkedListData &&
           [...linkedList.getListValues()].map((item, index) => {
             return (
-              <li className={listPageStyles.circle} key={index}>
+              <li className={listPageStyles.circle} key={index} data-testid={'circle'}>
                 {
                   subCircle && subCircle.index === index &&
                   <Circle

@@ -61,6 +61,12 @@ describe('Queue page component', () => {
       cy.contains('Удалить').as('deleteButton');
       cy.contains('Очистить').as('clearButton');
     });
+
+    cy.get("[data-testid=\'circleBorder\']").as('border');
+    cy.get("[data-testid=\'circleIndex\']").as('index');
+    cy.get("[data-testid=\'circleHead\']").as('head');
+    cy.get("[data-testid=\'circleTail\']").as('tail');
+
   })
 
   it('disable action buttons if input & initial stack are empty', () => {
@@ -79,11 +85,6 @@ describe('Queue page component', () => {
       cy.get('input').type(testInputValues[0]);
       cy.get('@addButton').should('not.be.disabled').click();
     });
-
-    cy.get("[data-testid=\'circleBorder\']").as('border');
-    cy.get("[data-testid=\'circleIndex\']").as('index');
-    cy.get("[data-testid=\'circleHead\']").as('head');
-    cy.get("[data-testid=\'circleTail\']").as('tail');
 
     for (let i = 0; i < additionSteps.length / (testInputValues.length); i++) {
       cy.get('@border').each(($el, index) => {
