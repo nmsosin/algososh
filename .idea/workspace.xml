@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b2e7a6c4-a521-4782-bd9f-1323a5b164e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/list-page/list-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/queue-page/queue-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/linked-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/linked-list.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/app/is-available.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/fibonacci/fibonacci.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/fibonacci/fibonacci.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/list/list.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/list/list.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/queue/queue.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/queue/queue.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/stack/stack.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/stack/stack.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/e2e/string/string.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/e2e/string/string.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/circle/__snapshots__/circle.test.js.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/circle/__snapshots__/circle.test.js.snap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +23,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2V1C1tDOdMXM5Q98zf0jdgdwHG4" />
   <component name="ProjectLevelVcsManager">
@@ -34,10 +49,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nmsosin/dev/algososh&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/nmsosin/dev/algososh/node_modules/react-scripts&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/nmsosin/dev/algososh/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -45,6 +62,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cypress/e2e" />
       <recent name="$PROJECT_DIR$/src/pages" />
     </key>
   </component>
@@ -63,6 +81,13 @@
       <workItem from="1693998166253" duration="1182000" />
       <workItem from="1694107703180" duration="25000" />
       <workItem from="1694515954823" duration="129099000" />
+      <workItem from="1695967049298" duration="311000" />
+      <workItem from="1695967671152" duration="28000" />
+      <workItem from="1695970599295" duration="3000" />
+      <workItem from="1696506536215" duration="23675000" />
+      <workItem from="1696585549467" duration="2000" />
+      <workItem from="1696662202510" duration="2645000" />
+      <workItem from="1696684811463" duration="3000" />
     </task>
     <servers />
   </component>

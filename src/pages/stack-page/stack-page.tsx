@@ -119,20 +119,20 @@ export const StackPage: React.FC = () => {
           <Button
             text={"Добавить"}
             onClick={() => handleAddButton(inputValue)}
-            disabled={buttonDisabled}
+            disabled={inputValue.length === 0 || buttonDisabled}
             isLoader={isLoading}
           />
           <Button
             text={"Удалить"}
             onClick={() => handleDeleteButton()}
-            disabled={buttonDisabled}
+            disabled={stackValues.length === 0 || buttonDisabled}
             isLoader={isLoading}
           />
         </div>
         <Button
           text={"Очистить"}
           onClick={() => handleClearButton()}
-          disabled={buttonDisabled}
+          disabled={stackValues.length === 0 || buttonDisabled}
           isLoader={isLoading}
         />
       </form>
